@@ -11,8 +11,6 @@
 ![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen)
 ![PokeCoach](images/4.png)
 
-**Transforming classic monster battles through deterministic real-time multiplayer platform**
-
 [Getting Started](#quick-start-guide) •
 [Features](#key-features) •
 [Architecture](#system-architecture) •
