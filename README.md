@@ -1,4 +1,4 @@
-# Pokemon Battle Ultimate Arena
+# PokeCoach
 
 <div align="center">
 
@@ -11,7 +11,7 @@
 ![Socket.IO](https://img.shields.io/badge/Socket.IO-4.7-orange)
 ![Status](https://img.shields.io/badge/status-production--ready-green)
 ![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen)
-![Pokemon Battle Arena](images/4.png)
+![PokeCoach](images/4.png)
 
 **Transforming classic monster battles through deterministic real-time multiplayer platform**
 
@@ -27,9 +27,11 @@
 
 ## Overview
 
-**Pokemon Battle Ultimate Arena** is a state-of-the-art multiplayer battle platform that combines deterministic game mechanics with real-time communication technology. It delivers competitive turn-based battles through sophisticated WebSocket orchestration, providing players with strategic depth while maintaining technical excellence through containerized microservices architecture.
+**PokeCoach** is a modern multiplayer battle platform that brings together classic game mechanics with real-time web technology. It provides competitive turn-based battles through WebSocket communication, offering players strategic depth while maintaining technical reliability through containerized microservices.
 
-This platform integrates cutting-edge battle simulation, real-time multiplayer coordination, and comprehensive observability to create an engaging competitive environment. It serves as a bridge between classic battle mechanics and modern web technology standards.
+The platform combines battle simulation, intelligent AI coaching, real-time multiplayer features, and comprehensive monitoring to create an engaging competitive environment. What makes this different from other battle simulators is the integrated AI Coach system that provides real-time strategic analysis and move recommendations.
+
+**KEY DIFFERENTIATOR:** The AI Coach system sets this platform apart by providing real-time strategic analysis, move recommendations, and competitive insights based on heuristic algorithms and battle pattern recognition.
 
 **INTELLECTUAL PROPERTY NOTICE:** This application is for educational and technical demonstration purposes only. It does not redistribute copyrighted assets. All Pokémon-related intellectual property belongs to their respective owners.
 
@@ -41,10 +43,10 @@ This platform integrates cutting-edge battle simulation, real-time multiplayer c
 <tr>
 <td width="70%">
 <ul>
-<li><b>Deterministic Turn Resolution</b>: Consistent battle outcomes through priority-based move ordering and transparent damage calculations</li>
-<li><b>Advanced Type Effectiveness System</b>: Complete implementation of type matchups with multiplier-based damage modification</li>
-<li><b>Status Effect Management</b>: Comprehensive status condition tracking including burn, poison, paralysis, freeze, and sleep mechanics</li>
-<li><b>Real-time Synchronization</b>: WebSocket-based communication ensuring instantaneous battle state updates across all participants</li>
+<li><b>Deterministic Turn Resolution</b>: Every battle follows consistent rules with clear move priority and damage calculations, so outcomes are fair and predictable</li>
+<li><b>Complete Type System</b>: All 18 Pokémon types are implemented with accurate effectiveness multipliers, just like in the official games</li>
+<li><b>Status Effect Tracking</b>: Burns, poison, paralysis, freeze, and sleep all work properly with turn-by-turn effects</li>
+<li><b>Real-time Battle Updates</b>: Both players see moves and results instantly through WebSocket connections</li>
 </ul>
 </td>
 <td width="30%">
@@ -77,10 +79,10 @@ This platform integrates cutting-edge battle simulation, real-time multiplayer c
 <tr>
 <td width="70%">
 <ul>
-<li><b>Dynamic Room Creation</b>: Seamless multiplayer lobby system with unique room codes and participant management</li>
-<li><b>Real-time Chat Integration</b>: Built-in communication system for coordination and strategic discussion</li>
-<li><b>Spectator Mode Support</b>: Observer functionality allowing multiple viewers per battle session</li>
-<li><b>Match State Persistence</b>: Robust battle state management with reconnection capabilities and session recovery</li>
+<li><b>Easy Room Setup</b>: Create private rooms with unique codes or join public matches with just a few clicks</li>
+<li><b>Built-in Chat</b>: Talk to your opponent or coordinate with friends during battles</li>
+<li><b>Spectator Support</b>: Friends can watch your battles without interfering with the game</li>
+<li><b>Reconnection System</b>: If you lose connection, you can rejoin your battle without losing progress</li>
 </ul>
 </td>
 <td width="30%">
@@ -98,10 +100,10 @@ This platform integrates cutting-edge battle simulation, real-time multiplayer c
 </td>
 <td width="70%">
 <ul>
-<li><b>Intelligent Move Recommendations</b>: Advanced heuristic analysis providing optimal move suggestions based on battle state</li>
-<li><b>Risk Assessment Engine</b>: Comprehensive evaluation of strategic options with probability-based outcome predictions</li>
-<li><b>Matchup Analysis</b>: Deep statistical analysis of creature interactions and type effectiveness calculations</li>
-<li><b>Learning Algorithm Integration</b>: Adaptive recommendation system that improves through battle pattern analysis</li>
+<li><b>Smart Move Suggestions</b>: The AI analyzes your current battle situation and recommends the best moves based on damage calculations and strategic positioning</li>
+<li><b>Risk Assessment</b>: Get probability estimates for different outcomes to help you make informed decisions during critical moments</li>
+<li><b>Type Matchup Analysis</b>: Understand which Pokémon have advantages over others with detailed explanations of type effectiveness</li>
+<li><b>Adaptive Learning</b>: The AI learns from your playing style and improves its recommendations over time to match your preferences</li>
 </ul>
 </td>
 </tr>
@@ -113,10 +115,10 @@ This platform integrates cutting-edge battle simulation, real-time multiplayer c
 <tr>
 <td width="70%">
 <ul>
-<li><b>Real-time Performance Metrics</b>: Prometheus-based monitoring with custom application metrics and system health indicators</li>
-<li><b>Interactive Dashboard Visualization</b>: Grafana-powered analytics displaying battle statistics, user engagement, and system performance</li>
-<li><b>Health Check Automation</b>: Multi-environment validation scripts ensuring consistent deployment quality across platforms</li>
-<li><b>Battle Analytics Tracking</b>: Comprehensive game state logging with pattern recognition and competitive balance analysis</li>
+<li><b>Performance Monitoring</b>: Track how well the servers are running with real-time metrics and health checks</li>
+<li><b>Battle Statistics</b>: View detailed analytics about battles, player activity, and system performance through interactive dashboards</li>
+<li><b>Automated Testing</b>: Scripts that automatically verify everything is working correctly across different deployment environments</li>
+<li><b>Game Analytics</b>: Monitor battle patterns and balance to ensure fair and competitive gameplay</li>
 </ul>
 </td>
 <td width="30%">
@@ -165,7 +167,7 @@ This platform integrates cutting-edge battle simulation, real-time multiplayer c
 ## Project Structure
 
 ```
-Pokemon-Battle-Arena/
+PokeCoach/
 ├── api/                           # FastAPI REST service
 │   ├── __init__.py                    # Package initialization
 │   ├── main.py                        # FastAPI application entry
@@ -303,6 +305,66 @@ python -m http.server 8080  # Serves on http://localhost:8080
 
 ## Server Configuration
 
+The platform uses environment-based configuration for flexible deployment across different environments.
+
+### Core Server Settings
+
+```javascript
+// server/server.js
+const PORT = process.env.PORT || 3000;
+const MAX_ROOMS = process.env.MAX_ROOMS || 100;
+const MAX_PLAYERS_PER_ROOM = 2;
+const ROOM_TIMEOUT = process.env.ROOM_TIMEOUT || 1800000; // 30 minutes
+const HEARTBEAT_INTERVAL = 25000;
+```
+
+### API Configuration
+
+```python
+# api/config.py
+import os
+
+class Settings:
+    API_HOST = os.getenv("API_HOST", "0.0.0.0")
+    API_PORT = int(os.getenv("API_PORT", 8000))
+    DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://localhost:5432/pokemon_battles")
+    REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
+    DEBUG = os.getenv("DEBUG", "false").lower() == "true"
+    CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*").split(",")
+```
+
+### Environment Variables
+
+| Variable       | Default   | Description                     |
+| -------------- | --------- | ------------------------------- |
+| `PORT`         | 3000      | WebSocket server port           |
+| `API_PORT`     | 8000      | FastAPI service port            |
+| `MAX_ROOMS`    | 100       | Maximum concurrent battle rooms |
+| `ROOM_TIMEOUT` | 1800000   | Room timeout in milliseconds    |
+| `DATABASE_URL` | localhost | PostgreSQL connection string    |
+| `REDIS_URL`    | localhost | Redis connection string         |
+| `DEBUG`        | false     | Enable debug logging            |
+| `CORS_ORIGINS` | \*        | Allowed CORS origins            |
+
+### Docker Environment
+
+Create a `.env` file in your project root:
+
+```bash
+# Database Configuration
+DATABASE_URL=postgresql://postgres:password@db:5432/pokemon_battles
+REDIS_URL=redis://redis:6379
+
+# Server Configuration
+PORT=3000
+API_PORT=8000
+MAX_ROOMS=200
+DEBUG=true
+
+# CORS Configuration
+CORS_ORIGINS=http://localhost:3000,http://localhost:8080
+```
+
 ---
 
 ## Demo & Screenshots
@@ -320,10 +382,101 @@ python -m http.server 8080  # Serves on http://localhost:8080
 </p>
 
 <p align="center">
+  <img src="images/6.png" alt="AI Coach Interface">
+  <br>
+  <em>Advanced AI Coach System with Real-time Strategic Recommendations</em>
+</p>
+
+<p align="center">
   <img src="images/2.png" alt="Room Management">
   <br>
   <em>Multiplayer Lobby System with Real-time Chat Integration</em>
 </p>
+
+## Advanced AI Coach System
+
+### Intelligence Engine Features
+
+<table>
+<tr>
+<td width="70%">
+<ul>
+<li><b>Battle State Analysis</b>: The AI continuously watches the battle and calculates the best moves based on your Pokémon's health, status effects, and type advantages</li>
+<li><b>Opponent Prediction</b>: Machine learning models study common player behaviors to predict what your opponent might do next</li>
+<li><b>Outcome Probability</b>: The system evaluates different move options and tells you which ones are most likely to succeed</li>
+<li><b>Personal Adaptation</b>: Over time, the AI learns how you like to play and adjusts its suggestions to match your style</li>
+</ul>
+</td>
+<td width="30%">
+<img src="images/5.png" alt="AI Coach Analytics">
+</td>
+</tr>
+</table>
+
+### Strategic Advisory Components
+
+<table>
+<tr>
+<td width="30%">
+<img src="images/6.png" alt="Coach Recommendations">
+</td>
+<td width="70%">
+<ul>
+<li><b>Move Analysis</b>: Examines all your available moves and ranks them by effectiveness, considering damage, status effects, and long-term strategy</li>
+<li><b>Team Strategy</b>: Looks at your remaining Pokémon and suggests when to switch for better matchups and coverage</li>
+<li><b>Meta Knowledge</b>: Provides insights into popular strategies and effective counters used by competitive players</li>
+<li><b>Learning Explanations</b>: Explains why certain moves are recommended, helping you understand the strategy and improve your skills</li>
+</ul>
+</td>
+</tr>
+</table>
+
+### AI Coach Technical Implementation
+
+| Feature               | Algorithm                             | Purpose                                                                      |
+| --------------------- | ------------------------------------- | ---------------------------------------------------------------------------- |
+| **Move Scoring**      | Multi-factor weighted analysis        | Ranks all possible moves by expected value and strategic impact              |
+| **Damage Prediction** | Statistical modeling with type charts | Accurate damage range calculations with critical hit probabilities           |
+| **Opponent Modeling** | Behavioral pattern recognition        | Predicts likely opponent moves based on battle history and common strategies |
+| **Risk Evaluation**   | Monte Carlo simulation                | Assesses potential outcomes across multiple battle scenarios                 |
+| **Learning System**   | Reinforcement learning adaptation     | Improves recommendations based on user feedback and battle outcomes          |
+
+## User Guide
+
+### Getting Started with AI-Enhanced Battles
+
+1. **Enable AI Coach System**
+
+   -  Activate the AI Coach from the main menu settings
+   -  Choose between beginner, intermediate, or advanced advisory levels
+   -  Configure notification preferences for real-time recommendations
+
+2. **Strategic Team Building with AI**
+
+   -  Use AI-powered team composition analysis
+   -  Receive suggestions for optimal move combinations
+   -  Get type coverage recommendations and synergy insights
+   -  Save AI-optimized team presets for different battle formats
+
+3. **Real-time Battle Coaching**
+
+   -  Monitor AI coach panel during battles for move recommendations
+   -  View probability calculations and damage predictions
+   -  Understand strategic reasoning through detailed explanations
+   -  Learn from post-battle analysis and improvement suggestions
+
+4. **Advanced Competitive Features**
+   -  Access meta-game intelligence and trending strategies
+   -  Receive opponent pattern recognition insights
+   -  Utilize risk assessment for high-stakes decisions
+   -  Track personal improvement metrics and skill development
+
+### Pro Battle Tips with AI Integration
+
+-  **AI-Assisted Decision Making**: Always consider AI recommendations alongside your instincts
+-  **Learning Mode**: Use detailed explanations to understand why certain moves are optimal
+-  **Adaptive Strategy**: Let the AI learn your playstyle for personalized recommendations
+-  **Competitive Analysis**: Leverage AI insights to understand meta-game trends and counters
 
 ## Game Mechanics & Features
 
@@ -416,7 +569,7 @@ Coding Standards: ES6 modules • (planned) linting • small reviewable units �
 
 ## License
 
-Pokemon Battle Ultimate Arena is released under the MIT License. See the [LICENSE](LICENSE) file for complete terms.
+PokeCoach is released under the MIT License. See the [LICENSE](LICENSE) file for complete terms.
 
 ### Intellectual Property Notice
 
