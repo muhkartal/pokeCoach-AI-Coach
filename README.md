@@ -599,5 +599,3 @@ Coding Standards: ES6 modules • (planned) linting • small reviewable units �
 ---
 
 **Developed by [Muhammad Kartal](https://github.com/muhkartal)**
-
-_Transforming classic battle mechanics through modern web technology_
