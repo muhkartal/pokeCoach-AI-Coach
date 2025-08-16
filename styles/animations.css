@@ -1,0 +1,314 @@
+@keyframes rain {
+   0% {
+      transform: translateY(0);
+   }
+   100% {
+      transform: translateY(4px);
+   }
+}
+
+@keyframes sandstorm {
+   0% {
+      transform: translateX(0);
+   }
+   100% {
+      transform: translateX(-100%);
+   }
+}
+
+@keyframes sleep-z {
+   0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+   }
+   50% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 1;
+   }
+}
+
+@keyframes damage-float {
+   0% {
+      transform: translateY(0) scale(0.5);
+      opacity: 0;
+   }
+   50% {
+      transform: translateY(-30px) scale(1.2);
+      opacity: 1;
+   }
+   100% {
+      transform: translateY(-60px) scale(1);
+      opacity: 0;
+   }
+}
+
+@keyframes player-attack {
+   0% {
+      transform: translate(0, 0);
+   }
+   50% {
+      transform: translate(50px, -20px) scale(1.1);
+   }
+   100% {
+      transform: translate(0, 0);
+   }
+}
+
+@keyframes enemy-attack {
+   0% {
+      transform: translate(0, 0);
+   }
+   50% {
+      transform: translate(-50px, 20px) scale(1.1);
+   }
+   100% {
+      transform: translate(0, 0);
+   }
+}
+
+@keyframes damage-shake {
+   0%, 100% {
+      transform: translateX(0);
+   }
+   25% {
+      transform: translateX(-5px);
+   }
+   75% {
+      transform: translateX(5px);
+   }
+}
+
+@keyframes faint {
+   0% {
+      transform: translateY(0) rotate(0);
+      opacity: 1;
+   }
+   100% {
+      transform: translateY(50px) rotate(90deg);
+      opacity: 0;
+   }
+}
+
+@keyframes flash {
+   0% {
+      opacity: 0.5;
+   }
+   50% {
+      opacity: 0.8;
+   }
+   100% {
+      opacity: 0;
+   }
+}
+
+@keyframes critical-hit {
+   0% {
+      transform: scale(1) rotate(0deg);
+   }
+   25% {
+      transform: scale(1.1) rotate(-2deg);
+   }
+   75% {
+      transform: scale(1.1) rotate(2deg);
+   }
+   100% {
+      transform: scale(1) rotate(0deg);
+   }
+}
+
+@keyframes pokeball-shake {
+   0%, 100% {
+      transform: rotate(0deg);
+   }
+   25% {
+      transform: rotate(-10deg);
+   }
+   75% {
+      transform: rotate(10deg);
+   }
+}
+
+@keyframes pokeball-active {
+   0%, 100% {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6),
+         inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 0 10px rgba(59, 130, 246, 0.5);
+   }
+   50% {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6),
+         inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 0 15px rgba(59, 130, 246, 0.8);
+   }
+}
+
+@keyframes pokeball-warning {
+   0%, 100% {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6),
+         inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 0 8px rgba(251, 146, 60, 0.6);
+   }
+   50% {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6),
+         inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 0 12px rgba(251, 146, 60, 0.9);
+   }
+}
+
+@keyframes pokeball-critical {
+   0%, 100% {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6),
+         inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 0 8px rgba(239, 68, 68, 0.7);
+   }
+   50% {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6),
+         inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 0 12px rgba(239, 68, 68, 1);
+      transform: scale(0.9);
+   }
+}
+
+@keyframes pixel-blink {
+   0%, 50% {
+      opacity: 1;
+   }
+   51%, 100% {
+      opacity: 0.5;
+   }
+}
+
+@keyframes pixel-pulse {
+   0%, 100% {
+      opacity: 0.8;
+   }
+   50% {
+      opacity: 1;
+   }
+}
+
+@keyframes pixel-bounce-in {
+   0% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(10px) scale(0.9);
+   }
+   100% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+   }
+}
+
+@keyframes rainbow-glow {
+   0% {
+      opacity: 0.7;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+@keyframes shine {
+   0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+   }
+   100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+   }
+}
+
+@keyframes slide-in-bottom {
+   from {
+      transform: translateY(100px);
+      opacity: 0;
+   }
+   to {
+      transform: translateY(0);
+      opacity: 1;
+   }
+}
+
+.animate-damage-shake {
+   animation: damage-shake 0.3s ease-in-out;
+}
+
+.animate-critical-hit {
+   animation: critical-hit 0.5s ease-in-out;
+}
+
+.animate-player-attack {
+   animation: player-attack 0.6s ease-in-out;
+}
+
+.animate-enemy-attack {
+   animation: enemy-attack 0.6s ease-in-out;
+}
+
+.animate-damage {
+   animation: damage-shake 0.3s ease-in-out;
+}
+
+.animate-faint {
+   animation: faint 1s ease-in forwards;
+}
+
+.animate-pokeball-shake {
+   animation: pokeball-shake 0.5s ease-in-out;
+}
+
+.weather-rain {
+   position: relative;
+}
+
+.weather-rain::before {
+   content: "";
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-image: linear-gradient(transparent 50%, rgba(174, 194, 224, 0.4) 50%);
+   background-size: 100% 4px;
+   animation: rain 0.3s linear infinite;
+   pointer-events: none;
+   z-index: 1;
+}
+
+.weather-sun {
+   filter: brightness(1.2) contrast(1.1);
+}
+
+.weather-sandstorm {
+   position: relative;
+}
+
+.weather-sandstorm::before {
+   content: "";
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: rgba(194, 154, 108, 0.3);
+   animation: sandstorm 20s linear infinite;
+   pointer-events: none;
+   z-index: 1;
+}
+
+.status-burn {
+   filter: hue-rotate(-20deg) brightness(1.1);
+}
+
+.status-poison {
+   filter: hue-rotate(280deg) saturate(1.2);
+}
+
+.status-paralysis {
+   filter: hue-rotate(60deg) brightness(0.9);
+}
+
+.status-freeze {
+   filter: hue-rotate(180deg) brightness(1.3) contrast(1.2);
+}
+
+.status-sleep::after {
+   content: "Z Z Z";
+   position: absolute;
+   top: -20px;
+   right: 0;
+   animation: sleep-z 2s ease-in-out infinite;
+   font-size: 12px;
+   color: #4a5568;
+}

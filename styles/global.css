@@ -1,0 +1,132 @@
+:root {
+   --primary-color: #58a8d8;
+   --secondary-color: #f8f8f8;
+   --accent-color: #ffcc00;
+   --text-color: #1a202c;
+   --text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+   --battle-bg: #58a8d8;
+}
+
+body {
+   font-family: "Press Start 2P", cursive;
+   background-color: var(--primary-color);
+   background-image: url("../../wallpaperflare.com_wallpaper.jpg");
+   background-size: cover;
+   background-position: center;
+   transition: background 0.5s ease-in-out;
+   color: var(--text-color);
+   text-shadow: var(--text-shadow);
+   margin: 0;
+   padding: 0;
+   overflow-x: hidden;
+}
+
+.pixelated {
+   image-rendering: pixelated;
+   image-rendering: -webkit-optimize-contrast;
+}
+
+.text-box {
+   background-color: #f8f8f8;
+   border: 8px solid;
+   border-image: url('data:image/svg+xml;charset=utf-8,%3Csvg width%3D"24" height%3D"24" viewBox%3D"0 0 24 24" fill%3D"none" xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%3E%3Cpath d%3D"M0 0h24v24H0z" fill%3D"%23fff"%2F%3E%3Cpath d%3D"M1 1h22v22H1z" fill%3D"none" stroke%3D"%23000" stroke-width%3D"2"%2F%3E%3Cpath d%3D"M8 1h8v2H8zM1 8h2v8H1zM8 21h8v2H8zM21 8h2v8h-2z" fill%3D"%23000"%2F%3E%3C%2Fsvg%3E') 8;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.action-button {
+   border: 4px solid #000;
+   box-shadow: inset 0 0 0 2px #989898, inset 0 0 0 4px #fff;
+   transition: all 0.1s;
+   cursor: pointer;
+   position: relative;
+   user-select: none;
+   -webkit-user-select: none;
+}
+
+.action-button:hover {
+   transform: translateY(-2px);
+   box-shadow: inset 0 0 0 2px #989898, inset 0 0 0 4px #fff, 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.action-button:active {
+   transform: translateY(0);
+}
+
+.action-button:focus {
+   outline: 3px solid #4299e1;
+   outline-offset: 2px;
+}
+
+.action-button:disabled {
+   opacity: 0.5;
+   cursor: not-allowed;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+   width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+   background: rgba(255, 255, 255, 0.3);
+   border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+   background: rgba(0, 0, 0, 0.6);
+   border-radius: 6px;
+}
+
+.loading-screen {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: var(--primary-color);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   z-index: 9999;
+}
+
+.loading-pokeball {
+   width: 100px;
+   height: 100px;
+   animation: pokeball-shake 1s ease-in-out infinite;
+}
+
+.sr-only {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   white-space: nowrap;
+   border-width: 0;
+}
+
+@media (max-width: 768px) {
+   body {
+      font-size: 10px;
+   }
+
+   .action-button {
+      font-size: 10px;
+      padding: 8px 12px;
+   }
+
+   .battle-scene {
+      scale: 0.8;
+   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+   * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+   }
+}
