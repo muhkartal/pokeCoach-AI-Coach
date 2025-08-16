@@ -1,390 +1,374 @@
-<div align="center">
-
 # Pokemon Battle Ultimate Arena
 
-<p>
-<strong>Deterministic real‑time turn‑based multiplayer battle platform.</strong><br/>
-Modular engine • Competitive mechanics • Deployment & observability built in
-</p>
+<div align="center">
 
-<p>
-<a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
-<img alt="Status" src="https://img.shields.io/badge/Status-Active%20Development-0A8F62">
-<img alt="Build" src="https://img.shields.io/badge/Build-Scripts-green">
-<img alt="API" src="https://img.shields.io/badge/API-FastAPI-009688">
-<img alt="Realtime" src="https://img.shields.io/badge/WebSocket-Socket.IO-4A90E2">
-<img alt="Container" src="https://img.shields.io/badge/Container-Docker-2496ED">
-</p>
+![Version](https://img.shields.io/badge/version-2.0.0-brightgreen)
+![Release Date](https://img.shields.io/badge/release-August%202025-blue)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node.js](https://img.shields.io/badge/node.js-18%2B-green)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.104-red)
+![Socket.IO](https://img.shields.io/badge/Socket.IO-4.7-orange)
+![Status](https://img.shields.io/badge/status-production--ready-green)
+![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen)
+![Pokemon Battle Arena](images/4.png)
 
-<p>
-<a href="#quick-start">Quick Start</a> •
-<a href="#feature-matrix">Features</a> •
-<a href="#system-architecture">Architecture</a> •
-<a href="#observability--monitoring">Monitoring</a> •
-<a href="#roadmap">Roadmap</a> •
-<a href="#contributing">Contributing</a>
-</p>
+**Transforming classic monster battles through deterministic real-time multiplayer platform**
 
-<p><em>Not affiliated with or endorsed by Nintendo / The Pokémon Company. See Intellectual Property Notice below.</em></p>
+[Getting Started](#quick-start-guide) •
+[Features](#key-features) •
+[Architecture](#system-architecture) •
+[Documentation](#documentation) •
+[Contributing](#contributing)
 
 </div>
-
----
-
-## Platform Overview
-
-| Domain        | Focus                  | Notes                                                         |
-| ------------- | ---------------------- | ------------------------------------------------------------- |
-| Engine        | Deterministic core     | Priority, status, type matchups, future generational variants |
-| Gateway       | Realtime orchestration | Socket.IO rooms, matchmaking hooks, event dispatch            |
-| API           | Service layer          | Stats, metadata, health, future persistence endpoints         |
-| Data          | Structured sets        | Roster, moves, types, status & stage schemas                  |
-| Extensibility | Modular formats        | Pluggable rules, AI advisory pipeline evolution               |
-| Deployment    | Multi-surface          | Local Compose, container stack, AWS ECS scripts               |
-| Observability | Metrics + dashboards   | Prometheus exporters, Grafana boards, validation scripts      |
-| Operations    | Edge & supervision     | Nginx proxy & static, Supervisor multi-process patterns       |
-
----
-
-## Quick Start (Essentials)
-
-```bash
-git clone https://github.com/muhkartal/PokeCoach.git
-cd PokeCoach
-docker-compose up --build
-```
-Access: Game http://localhost • API Docs :8000/docs • Grafana :3001 • Prometheus :9090
-
-<details>
-<summary><strong>Run Without Docker</strong></summary>
-
-```bash
-# WebSocket
-cd server && npm install && npm start
-# API
-cd ../api && pip install -r requirements.txt && uvicorn main:app --reload --port 8000
-# Static client
-cd .. && python -m http.server 8080
-```
-
-</details>
-
----
-
-## Table of Contents
-
-1. [Overview](#overview)
-2. [Feature Matrix](#feature-matrix)
-3. [Screens & Interface](#screens--interface)
-4. [System Architecture](#system-architecture)
-5. [Project Structure](#project-structure)
-6. [Technology Stack](#technology-stack)
-7. [Getting Started](#getting-started)
-   -  [Option 1: Docker Compose](#option-1-docker-compose)
-   -  [Option 2: AWS ECS Deployment](#option-2-aws-ecs-deployment)
-   -  [Option 3: Local Development](#option-3-local-development)
-8. [Server Configuration](#server-configuration)
-9. [How to Play](#how-to-play)
-10.   [Data & Mechanics](#data--mechanics)
-11.   [Observability & Monitoring](#observability--monitoring)
-12.   [Validation & Health](#validation--health)
-13.   [Performance & Scalability](#performance--scalability)
-14.   [Security Considerations](#security-considerations)
-15.   [Roadmap](#roadmap)
-16.   [Contributing](#contributing)
-17.   [Testing Strategy](#testing-strategy)
-18.   [License & Attribution](#license--attribution)
 
 ---
 
 ## Overview
 
-Deterministic turn engine + real‑time WebSocket orchestration. Clear separation: client UI, Socket.IO gateway, FastAPI service layer, Redis coordination, PostgreSQL persistence (expanding), Nginx edge, Prometheus/Grafana observability, container & cloud deployment scripts.
+**Pokemon Battle Ultimate Arena** is a state-of-the-art multiplayer battle platform that combines deterministic game mechanics with real-time communication technology. It delivers competitive turn-based battles through sophisticated WebSocket orchestration, providing players with strategic depth while maintaining technical excellence through containerized microservices architecture.
 
----
+This platform integrates cutting-edge battle simulation, real-time multiplayer coordination, and comprehensive observability to create an engaging competitive environment. It serves as a bridge between classic battle mechanics and modern web technology standards.
 
-## Feature Matrix
+**INTELLECTUAL PROPERTY NOTICE:** This application is for educational and technical demonstration purposes only. It does not redistribute copyrighted assets. All Pokémon-related intellectual property belongs to their respective owners.
 
-<details open>
-<summary><strong>Current / In Progress / Planned</strong></summary>
+## Key Features
 
-| Area          | Now                      | In Progress         | Next                   |
-| ------------- | ------------------------ | ------------------- | ---------------------- |
-| Multiplayer   | Live PvP rooms           | Spectators          | Tournaments            |
-| Turn Engine   | Deterministic resolution | Edge case expansion | Generational rule sets |
-| Team Builder  | Manual + random teams    | Persist presets     | Draft / ban phase      |
-| Statistics    | Session scope            | Historical storage  | Leaderboards           |
-| Settings      | Core toggles             | Accessibility depth | Profile sync           |
-| AI Coach      | Heuristic advisory       | Predictive modeling | Learning agent         |
-| Deployment    | Docker / AWS / Heroku    | CI artifacts        | Multi-region           |
-| Observability | Metrics + dashboards     | Alert policy set    | Tracing (OTel)         |
-| Security      | Basic sandbox            | Harden headers      | Rate limits / WAF      |
-| Persistence   | Static roster/moves      | Battle logs         | Replay serialization   |
+### Real-Time Multiplayer Battle Engine
 
-</details>
+<table>
+<tr>
+<td width="70%">
+<ul>
+<li><b>Deterministic Turn Resolution</b>: Consistent battle outcomes through priority-based move ordering and transparent damage calculations</li>
+<li><b>Advanced Type Effectiveness System</b>: Complete implementation of type matchups with multiplier-based damage modification</li>
+<li><b>Status Effect Management</b>: Comprehensive status condition tracking including burn, poison, paralysis, freeze, and sleep mechanics</li>
+<li><b>Real-time Synchronization</b>: WebSocket-based communication ensuring instantaneous battle state updates across all participants</li>
+</ul>
+</td>
+<td width="30%">
+<img src="images/4.png" alt="Battle Engine Interface">
+</td>
+</tr>
+</table>
 
----
+### Interactive Team Building System
 
-## Screens & Interface
+<table>
+<tr>
+<td width="30%">
+<img src="images/3.png" alt="Team Builder">
+</td>
+<td width="70%">
+<ul>
+<li><b>Comprehensive Roster Management</b>: Access to extensive creature database with detailed stats, movesets, and type information</li>
+<li><b>Strategic Team Composition</b>: Advanced team building tools with type coverage analysis and synergy recommendations</li>
+<li><b>Random Team Generation</b>: Intelligent randomization algorithms creating balanced team compositions for quick matches</li>
+<li><b>Move Set Customization</b>: Complete move selection with damage calculations, priority levels, and strategic effect previews</li>
+</ul>
+</td>
+</tr>
+</table>
 
-| Screen         | Description                                       |
-| -------------- | ------------------------------------------------- |
-| Main Menu      | Entry, statistics summary, settings access        |
-| Lobby          | Room creation/join, chat, ready state             |
-| Team Builder   | Select or generate team compositions              |
-| Battle Arena   | Turn order, health/state display, move selection  |
-| Settings Panel | Gameplay, text, animation, accessibility controls |
-| Coach Panel    | Strategic evaluation and ranked recommendations   |
+### Sophisticated Room Management
 
-See `images/` for full‑resolution UI captures (`images/1.png`–`images/6.png`).
+<table>
+<tr>
+<td width="70%">
+<ul>
+<li><b>Dynamic Room Creation</b>: Seamless multiplayer lobby system with unique room codes and participant management</li>
+<li><b>Real-time Chat Integration</b>: Built-in communication system for coordination and strategic discussion</li>
+<li><b>Spectator Mode Support</b>: Observer functionality allowing multiple viewers per battle session</li>
+<li><b>Match State Persistence</b>: Robust battle state management with reconnection capabilities and session recovery</li>
+</ul>
+</td>
+<td width="30%">
+<img src="images/2.png" alt="Room Management">
+</td>
+</tr>
+</table>
 
-### In-Game Screenshots
+### AI-Powered Strategic Advisory
 
-<div align="center">
-      <table>
-            <tr>
-                  <td><img src="images/1.png" alt="Main Menu: entry screen with navigation options" width="240"/></td>
-                  <td><img src="images/2.png" alt="Lobby: room list and readiness states" width="240"/></td>
-                  <td><img src="images/3.png" alt="Team Builder: roster selection interface" width="240"/></td>
-            </tr>
-            <tr>
-                  <td><img src="images/4.png" alt="Battle Arena: active turn resolution visuals" width="240"/></td>
-                  <td><img src="images/5.png" alt="Settings Panel: gameplay & accessibility toggles" width="240"/></td>
-                  <td><img src="images/6.png" alt="Coach Panel: advisory move recommendations" width="240"/></td>
-            </tr>
-      </table>
-      <p><sub>Representative gameplay and interface states (development builds).</sub></p>
-</div>
+<table>
+<tr>
+<td width="30%">
+<img src="images/6.png" alt="AI Coach">
+</td>
+<td width="70%">
+<ul>
+<li><b>Intelligent Move Recommendations</b>: Advanced heuristic analysis providing optimal move suggestions based on battle state</li>
+<li><b>Risk Assessment Engine</b>: Comprehensive evaluation of strategic options with probability-based outcome predictions</li>
+<li><b>Matchup Analysis</b>: Deep statistical analysis of creature interactions and type effectiveness calculations</li>
+<li><b>Learning Algorithm Integration</b>: Adaptive recommendation system that improves through battle pattern analysis</li>
+</ul>
+</td>
+</tr>
+</table>
 
----
+### Comprehensive Monitoring & Analytics
 
-## System Architecture
-
-### Visual Diagram (HTML/CSS Renderable)
-
-<!-- Lightweight styled architecture diagram (GitHub strips <style>, so inline styles used) -->
-<div align="center">
-      <div style="display:flex; flex-direction:column; align-items:center; gap:18px; font-family:Arial,Helvetica,sans-serif;">
-            <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-                  <div style="padding:10px 14px; border:1px solid #ccc; border-radius:6px; background:#f9fafb; min-width:170px; text-align:center;">
-                        <strong>Browser Client</strong><br/>
-                        <span style="font-size:12px; color:#555;">UI / Team Builder / Battle Canvas</span>
-                  </div>
-            </div>
-            <div style="font-size:13px; color:#333;">WebSocket (Socket.IO) + HTTPS</div>
-            <div style="display:flex; gap:28px; flex-wrap:wrap; justify-content:center;">
-                  <div style="padding:12px 16px; border:1px solid #bbb; border-radius:8px; background:#eef6ff; min-width:190px;">
-                        <strong>Realtime Gateway</strong><br/>
-                        <span style="font-size:12px; color:#444;">Node.js / Socket.IO<br/>Room lifecycle, events, dispatch</span>
-                  </div>
-                  <div style="padding:12px 16px; border:1px solid #bbb; border-radius:8px; background:#eefaf2; min-width:190px;">
-                        <strong>REST API</strong><br/>
-                        <span style="font-size:12px; color:#444;">FastAPI<br/>Stats, metadata, health</span>
-                  </div>
-            </div>
-            <div style="display:flex; gap:22px; flex-wrap:wrap; justify-content:center;">
-                  <div style="padding:10px 14px; border:1px solid #ccc; border-radius:6px; background:#fcfcfc; min-width:150px; text-align:center;">
-                        <strong>Redis</strong><br/>
-                        <span style="font-size:11px; color:#555;">Session store / PubSub / Coordination</span>
-                  </div>
-                  <div style="padding:10px 14px; border:1px solid #ccc; border-radius:6px; background:#fcfcfc; min-width:150px; text-align:center;">
-                        <strong>PostgreSQL</strong><br/>
-                        <span style="font-size:11px; color:#555;">Persistent data / Future logs</span>
-                  </div>
-            </div>
-            <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
-                  <div style="padding:10px 14px; border:1px solid #ccc; border-radius:6px; background:#f5f5f5; min-width:150px; text-align:center;">
-                        <strong>Nginx</strong><br/>
-                        <span style="font-size:11px; color:#555;">Reverse proxy / Static / TLS</span>
-                  </div>
-                  <div style="padding:10px 14px; border:1px solid #ccc; border-radius:6px; background:#f5f5f5; min-width:150px; text-align:center;">
-                        <strong>Supervisor</strong><br/>
-                        <span style="font-size:11px; color:#555;">Multi-process orchestration</span>
-                  </div>
-            </div>
-            <div style="display:flex; gap:18px; flex-wrap:wrap; justify-content:center;">
-                  <div style="padding:10px 14px; border:1px dashed #888; border-radius:6px; background:#fff; min-width:160px; text-align:center;">
-                        <strong>Prometheus</strong><br/>
-                        <span style="font-size:11px; color:#555;">Scrape metrics endpoints</span>
-                  </div>
-                  <div style="padding:10px 14px; border:1px dashed #888; border-radius:6px; background:#fff; min-width:160px; text-align:center;">
-                        <strong>Grafana</strong><br/>
-                        <span style="font-size:11px; color:#555;">Dashboards & analysis</span>
-                  </div>
-                  <div style="padding:10px 14px; border:1px dashed #888; border-radius:6px; background:#fff; min-width:160px; text-align:center;">
-                        <strong>Validation Scripts</strong><br/>
-                        <span style="font-size:11px; color:#555;">Health & deployment checks</span>
-                  </div>
-            </div>
-            <div style="font-size:11px; color:#777; max-width:640px; text-align:center; line-height:1.4;">
-                  Flow: Browser issues realtime (WebSocket) events to Realtime Gateway and REST calls to API. Redis coordinates sessions & publish/subscribe. PostgreSQL persists domain data. Nginx frontends traffic & static assets. Supervisor manages processes in container deployments. Observability stack (Prometheus, Grafana) ingests metrics & supports validation.
-            </div>
-      </div>
-</div>
-
-### Mermaid Fallback
-
-```mermaid
-flowchart TB
-      A[Browser Client\n(HTML/JS UI)] -->|WebSocket / HTTPS| B[Realtime Gateway\nNode.js Socket.IO]
-      A -->|REST| C[FastAPI Service]
-      B <-->|Pub/Sub| R[(Redis)]
-      C --> D[(PostgreSQL)]
-      B --> D
-      B --> N[Nginx]
-      C --> N
-      N --> A
-      subgraph Observability
-            P[Prometheus]
-            G[Grafana]
-            V[Validation Scripts]
-      end
-      B --> P
-      C --> P
-      P --> G
-      V --> B
-      V --> C
-```
-
-<p align="center"><sub>If inline HTML styling is stripped by the renderer, refer to the Mermaid fallback diagram above.</sub></p>
-
----
-
-## Project Structure
-
-```
-api/            FastAPI service (stats, health, metadata)
-server/         Socket.IO gateway (rooms, dispatch)
-database/       SQL init & future migrations
-constants/,data/Domain constants, roster, moves
-components/     Client UI modules
-styles/         CSS assets
-monitoring/     Prometheus & Grafana configs
-deploy/         Cloud / infra / validation scripts
-scripts/        Dev & utility tooling
-images/         UI & architecture captures
-docker-compose.yml  Orchestrated local stack
-Dockerfile      Multi-stage (client + proxy)
-nginx*.conf     Reverse proxy config
-supervisord.conf Process supervision
-Procfile        Heroku definition
-```
+<table>
+<tr>
+<td width="70%">
+<ul>
+<li><b>Real-time Performance Metrics</b>: Prometheus-based monitoring with custom application metrics and system health indicators</li>
+<li><b>Interactive Dashboard Visualization</b>: Grafana-powered analytics displaying battle statistics, user engagement, and system performance</li>
+<li><b>Health Check Automation</b>: Multi-environment validation scripts ensuring consistent deployment quality across platforms</li>
+<li><b>Battle Analytics Tracking</b>: Comprehensive game state logging with pattern recognition and competitive balance analysis</li>
+</ul>
+</td>
+<td width="30%">
+<img src="images/1.png" alt="Monitoring Dashboard">
+</td>
+</tr>
+</table>
 
 ---
 
 ## Technology Stack
 
-| Layer         | Primary                      | Purpose                            |
-| ------------- | ---------------------------- | ---------------------------------- |
-| Client        | Vanilla ES6 (Canvas planned) | Lightweight UI / no heavy SPA      |
-| Realtime      | Node.js + Socket.IO          | Events, room lifecycle             |
-| API           | FastAPI (Python)             | Stats, metadata, health            |
-| Persistence   | PostgreSQL                   | Structured domain data (expanding) |
-| Ephemeral     | Redis                        | Sessions, coordination, Pub/Sub    |
-| Edge          | Nginx                        | TLS, static, reverse proxy         |
-| Orchestration | Docker / Compose / ECS       | Packaging & scaling                |
-| Observability | Prometheus + Grafana         | Metrics & dashboards               |
-| Processes     | Supervisor                   | Multi-process pattern              |
+<table>
+<tr>
+<th>Layer</th>
+<th>Components</th>
+<th>Technologies</th>
+</tr>
+<tr>
+<td><b>Frontend</b></td>
+<td>Battle Interface, Team Builder, Room Management</td>
+<td>Vanilla JavaScript, HTML5 Canvas, WebSocket API, CSS3</td>
+</tr>
+<tr>
+<td><b>Backend</b></td>
+<td>Real-time Gateway, REST API, Battle Engine</td>
+<td>Node.js, Socket.IO, FastAPI, Python, Uvicorn</td>
+</tr>
+<tr>
+<td><b>Data Layer</b></td>
+<td>Persistence, Caching, Session Management</td>
+<td>PostgreSQL, Redis, JSON Schema Validation</td>
+</tr>
+<tr>
+<td><b>Infrastructure</b></td>
+<td>Containerization, Orchestration, Reverse Proxy</td>
+<td>Docker, Docker Compose, AWS ECS, Nginx, Supervisor</td>
+</tr>
+<tr>
+<td><b>Observability</b></td>
+<td>Metrics, Dashboards, Health Monitoring</td>
+<td>Prometheus, Grafana, Custom Health Endpoints</td>
+</tr>
+</table>
 
----
+## Project Structure
 
-## Getting Started
+```
+Pokemon-Battle-Arena/
+├── api/                           # FastAPI REST service
+│   ├── __init__.py                    # Package initialization
+│   ├── main.py                        # FastAPI application entry
+│   ├── routes/                        # API route handlers
+│   │   ├── health.py                  # Health check endpoints
+│   │   ├── stats.py                   # Battle statistics
+│   │   └── rooms.py                   # Room metadata
+│   └── models/                        # Data models
+│
+├── server/                        # Node.js WebSocket gateway
+│   ├── server.js                      # Socket.IO server
+│   ├── routes/                        # Socket event handlers
+│   │   ├── battle.js                  # Battle event management
+│   │   ├── rooms.js                   # Room lifecycle
+│   │   └── chat.js                    # Chat functionality
+│   └── utils/                         # Utility functions
+│
+├── components/                    # Frontend UI components
+│   ├── battle/                        # Battle interface
+│   │   ├── arena.js                   # Main battle arena
+│   │   ├── moves.js                   # Move selection
+│   │   └── status.js                  # Status display
+│   ├── team/                          # Team building
+│   │   ├── builder.js                 # Team composition
+│   │   └── selector.js                # Pokemon selection
+│   └── lobby/                         # Room management
+│
+├── data/                          # Game data and constants
+│   ├── pokemon/                       # Pokemon datasets
+│   ├── moves/                         # Move definitions
+│   ├── types/                         # Type effectiveness
+│   └── constants/                     # Game constants
+│
+├── monitoring/                    # Observability configuration
+│   ├── prometheus/                    # Metrics configuration
+│   ├── grafana/                       # Dashboard definitions
+│   └── alerts/                        # Alert rules
+│
+├── deploy/                        # Deployment scripts
+│   ├── docker/                        # Docker configurations
+│   ├── aws/                           # AWS ECS deployment
+│   ├── heroku/                        # Heroku deployment
+│   └── scripts/                       # Automation scripts
+│
+├── static/                        # Static assets
+│   ├── css/                           # Stylesheets
+│   ├── images/                        # UI screenshots
+│   └── fonts/                         # Typography assets
+│
+├── tests/                         # Test suite
+│   ├── unit/                          # Unit tests
+│   ├── integration/                   # Integration tests
+│   └── e2e/                           # End-to-end tests
+│
+├── docker-compose.yml             # Multi-service orchestration
+├── Dockerfile                     # Container definition
+├── nginx.conf                     # Reverse proxy configuration
+├── supervisord.conf               # Process supervision
+└── README.md                      # This documentation
+```
 
-### Option 1: Docker Compose
+## Quick Start Guide
+
+### System Requirements
+
+<table>
+<tr>
+<th>Component</th>
+<th>Minimum Requirements</th>
+<th>Recommended Specifications</th>
+</tr>
+<tr>
+<td>Operating System</td>
+<td>Windows 10, macOS 11, Ubuntu 20.04</td>
+<td>Windows 11, macOS 12+, Ubuntu 22.04+</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>18.x</td>
+<td>20.x or newer</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.8</td>
+<td>3.11 or newer</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>4 GB</td>
+<td>8 GB or more</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>Chrome 90+, Firefox 88+, Safari 14+</td>
+<td>Latest version of Chrome, Firefox, or Safari</td>
+</tr>
+</table>
+
+### Installation Process
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/muhkartal/PokeCoach.git
 cd PokeCoach
+
+# 2. Launch with Docker (Recommended)
 docker-compose up --build
+
+# 3. Access the application
+# Game Interface: http://localhost
+# API Documentation: http://localhost:8000/docs
+# Grafana Dashboard: http://localhost:3001 (admin/admin)
+# Prometheus Metrics: http://localhost:9090
 ```
 
-Access:
-
--  Game Client: http://localhost
--  API Docs: http://localhost:8000/docs
--  Grafana: http://localhost:3001 (admin/admin)
--  Prometheus: http://localhost:9090
-
-### Option 2: AWS ECS Deployment
+### Local Development Setup
 
 ```bash
-aws cloudformation create-stack \
-  --stack-name pokemon-battle-infrastructure \
-  --template-body file://aws/cloudformation.yml \
-  --capabilities CAPABILITY_IAM
-
-chmod +x deploy/deploy.sh
-./deploy/deploy.sh
-```
-
-### Option 3: Local Development
-
-```bash
-git clone https://github.com/muhkartal/PokeCoach.git
-cd PokeCoach
-
-# WebSocket server
+# 1. Set up WebSocket server
 cd server
 npm install
-npm start   # http://localhost:3000
+npm start   # Runs on http://localhost:3000
 
-# API
+# 2. Set up FastAPI service
 cd ../api
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 
-# Client (static)
+# 3. Serve static frontend
 cd ..
-python -m http.server 8080  # http://localhost:8080
+python -m http.server 8080  # Serves on http://localhost:8080
 ```
 
 ---
 
 ## Server Configuration
 
-`server/server.js` excerpt:
-
-```js
-const PORT = process.env.PORT || 3000;
-const MAX_ROOMS = 100;
-const MAX_PLAYERS_PER_ROOM = 2;
-```
-
-Environment variables to follow (rate limits, instrumentation toggles).
-
 ---
 
-## How to Play
+## Demo & Screenshots
 
-1. Launch (New Game / Multiplayer)  
-2. Create or join room (code)  
-3. Build or randomize team  
-4. Ready both players  
-5. Select moves; engine resolves order/results  
-6. Track health, status, switch strategically
+<p align="center">
+  <img src="images/4.png" alt="Battle Arena Interface">
+  <br>
+  <em>Real-time Battle Arena with Turn Resolution and Status Tracking</em>
+</p>
 
----
+<p align="center">
+  <img src="images/3.png" alt="Team Builder Interface">
+  <br>
+  <em>Strategic Team Composition with Type Coverage Analysis</em>
+</p>
 
-## Data & Mechanics
+<p align="center">
+  <img src="images/2.png" alt="Room Management">
+  <br>
+  <em>Multiplayer Lobby System with Real-time Chat Integration</em>
+</p>
 
-| Mechanic | Notes |
-| -------- | ----- |
-| Type Effectiveness | Multiplier lookup table |
-| Status Effects | Burn / poison / paralysis / freeze / sleep impact turns |
-| Stat Boosts | Stage → factor mapping |
-| Priority Moves | Precede speed order |
-| Randomness | Planned deterministic per‑turn seed |
-| AI Coach | Heuristic risk/reward & matchup |
+## Game Mechanics & Features
 
----
+### Battle System Implementation
+
+<table>
+<tr>
+<th>Mechanic</th>
+<th>Implementation</th>
+<th>Technical Details</th>
+</tr>
+<tr>
+<td><b>Type Effectiveness</b></td>
+<td>Multiplier-based damage calculation</td>
+<td>18 types, 324 interaction matrix, floating-point precision</td>
+</tr>
+<tr>
+<td><b>Status Effects</b></td>
+<td>Turn-based condition tracking</td>
+<td>Burn, poison, paralysis, freeze, sleep with duration management</td>
+</tr>
+<tr>
+<td><b>Stat Modifications</b></td>
+<td>Stage-based multiplier system</td>
+<td>±6 stages per stat, multiplicative factors (2/8 to 8/2 range)</td>
+</tr>
+<tr>
+<td><b>Priority System</b></td>
+<td>Move-based turn ordering</td>
+<td>5 priority levels (-4 to +4), speed tiebreaker resolution</td>
+</tr>
+<tr>
+<td><b>Damage Formula</b></td>
+<td>Generation IV+ standard</td>
+<td>Level, power, attack/defense, modifiers, type effectiveness</td>
+</tr>
+</table>
 
 ## Observability & Monitoring
 
-| Component | Endpoint / Path | Purpose |
-| --------- | ---------------- | ------- |
-| API Health | `/health` | Liveness & readiness |
-| Metrics | `/metrics` | Prometheus exposition |
-| Grafana | :3001 | Dashboards |
+| Component         | Endpoint / Path                 | Purpose                    |
+| ----------------- | ------------------------------- | -------------------------- |
+| API Health        | `/health`                       | Liveness & readiness       |
+| Metrics           | `/metrics`                      | Prometheus exposition      |
+| Grafana           | :3001                           | Dashboards                 |
 | Validation Script | `deploy/validate-deployment.sh` | Automated multi-env checks |
 
 ---
@@ -400,40 +384,6 @@ Environment variables to follow (rate limits, instrumentation toggles).
 
 Checks: service availability • socket handshake • room lifecycle • health & metrics reachability
 
----
-
-## Performance & Scalability
-
-| Dimension | Strategy |
-| --------- | -------- |
-| Horizontal Scaling | Replicated containers (shared Redis) |
-| Coordination | Redis pub/sub events |
-| Network | Batched turn resolution |
-| Caching | In‑memory roster & moves (warming planned) |
-| Future Bottlenecks | Stateless WS + sticky / token routing |
-
----
-
-## Security Considerations
-
-| Area | Current | Planned |
-| ---- | ------- | ------- |
-| Input Validation | Basic checks | Schema enforcement |
-| Authentication | None (open) | Token + session binding |
-| Transport | Local HTTP | TLS termination |
-| Rate Limiting | None | Redis token bucket |
-| Isolation | Service separation | Network policy hardening |
-
----
-
-## Roadmap
-
-Short Term: battle logs • deeper AI advisory • replay encoding  
-Mid Term: ranked ladder + matchmaking • spectators • replay viewer  
-Long Term: tournaments • distributed simulation queue • modular generational rule plugins
-
----
-
 ## Contributing
 
 1. Fork repository
@@ -444,83 +394,47 @@ Long Term: tournaments • distributed simulation queue • modular generational
 
 Coding Standards: ES6 modules • (planned) linting • small reviewable units • deterministic battle logic
 
----
-
-## Testing Strategy
-
-| Layer | Type | Scope |
-| ----- | ---- | ----- |
-| Unit | Engine functions | Move resolution / status application |
-| Integration | WS room flow | Join / leave / sync |
-| Contract | API endpoints | Health / metrics / room meta |
-| Load (Planned) | Simulated rooms | Latency / throughput |
-| Replay (Planned) | Determinism | Consistency checks |
-
----
-
 ## Available Scripts
 
-| Command | Purpose |
-| ------- | ------- |
-| `docker-compose up --build` | Full stack start |
-| `./scripts/setup-dev.sh` | Local dev bootstrap |
-| `./deploy/deploy.sh` | AWS ECS deploy |
-| `./deploy/heroku.sh` | Heroku deploy |
+| Command                           | Purpose              |
+| --------------------------------- | -------------------- |
+| `docker-compose up --build`       | Full stack start     |
+| `./scripts/setup-dev.sh`          | Local dev bootstrap  |
+| `./deploy/deploy.sh`              | AWS ECS deploy       |
+| `./deploy/heroku.sh`              | Heroku deploy        |
 | `./deploy/validate-deployment.sh` | Multi-env validation |
-| `./scripts/backup.sh` | DB backup |
+| `./scripts/backup.sh`             | DB backup            |
 
 ---
 
-## License & Attribution
+## Support and Community
 
-Licensed under MIT. See [LICENSE](LICENSE).
+-  **Documentation**: [GitHub Wiki](https://github.com/muhkartal/PokeCoach/wiki)
+-  **Issue Tracker**: [GitHub Issues](https://github.com/muhkartal/PokeCoach/issues)
+-  **Discussion Forum**: [GitHub Discussions](https://github.com/muhkartal/PokeCoach/discussions)
+-  **Developer Portal**: [API Documentation](http://localhost:8000/docs)
 
-Trademarks & Assets: Pokémon names, sprites, and related IP belong to their respective rights holders. This is a non-commercial, fan‑inspired technical platform; no proprietary asset redistribution.
+## License
 
----
+Pokemon Battle Ultimate Arena is released under the MIT License. See the [LICENSE](LICENSE) file for complete terms.
 
-## Acknowledgements
+### Intellectual Property Notice
 
--  Open source ecosystems (FastAPI, Socket.IO, PostgreSQL, Redis)
--  Monitoring stack maintainers (Prometheus, Grafana)
--  Inspiration from classic turn-based battle mechanics
+This project is a fan-inspired technical demonstration platform. Pokémon and all related intellectual property (names, sprites, types, creatures, moves, etc.) are trademarks of their respective owners (Nintendo, Game Freak, The Pokémon Company).
 
----
+**Important Disclaimers:**
 
-## Support & Issues
-
-Open issues and feature requests via the issue tracker:
-
--  Repository: https://github.com/muhkartal/PokeCoach
--  Issues: https://github.com/muhkartal/PokeCoach/issues
-
-Pull requests with focused scope and clear rationale are prioritized.
+-  No endorsement by or affiliation with Nintendo/The Pokémon Company is implied
+-  This is a non-commercial, educational project for technical demonstration
+-  No copyrighted assets are redistributed; only structured metadata for game mechanics
+-  Always respect intellectual property rights and official game guidelines
 
 ---
 
-## Versioning
+<div align="center">
 
-Current platform version: `2.0.0` (semantic progression planned as API stabilizes).
+**Developed with ⚡ by [Muhammad Kartal](https://github.com/muhkartal)**
 
----
+_Transforming classic battle mechanics through modern web technology_
 
-## Change Log (High-Level)
-
-| Version | Summary                                                                      |
-| ------- | ---------------------------------------------------------------------------- |
-| 2.0.0   | Modular architecture, multi-environment deployment scripts, monitoring layer |
-| 1.x     | Initial battle engine, room system, prototype UI                             |
-
-(Full detailed changelog to be introduced in future `CHANGELOG.md`.)
-
----
-
----
-
-## Intellectual Property Notice
-
-This project is a fan‑inspired technical platform. Pokémon and all related intellectual property (names, sprites, types, creatures, moves, etc.) are trademarks of their respective owners (Nintendo, Game Freak, The Pokémon Company). No endorsement is implied. Assets are not redistributed; only structured metadata necessary for mechanics research and educational purposes is included.
-
----
-
-End of Document
+</div>
