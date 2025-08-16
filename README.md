@@ -29,27 +29,13 @@
 
 The platform combines battle simulation, intelligent AI coaching, real-time multiplayer features, and comprehensive monitoring to create an engaging competitive environment. What makes this different from other battle simulators is the integrated AI Coach system that provides real-time strategic analysis and move recommendations.
 
-<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #4CAF50;">
-  <h4 style="color: white; margin: 0 0 8px 0; font-size: 16px;">🎯 KEY DIFFERENTIATOR</h4>
-  <p style="color: white; margin: 0; font-weight: 500;">The AI Coach system sets this platform apart by providing real-time strategic analysis, move recommendations, and competitive insights based on heuristic algorithms and battle pattern recognition.</p>
-</div>
+**KEY DIFFERENTIATOR:** The AI Coach system sets this platform apart by providing real-time strategic analysis, move recommendations, and competitive insights based on heuristic algorithms and battle pattern recognition.
 
-<div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 20px; margin: 25px 0;">
-  <div style="display: flex; align-items: center; margin-bottom: 15px;">
-    <span style="font-size: 24px; margin-right: 10px;">⚖️</span>
-    <h3 style="color: #856404; margin: 0; font-size: 18px; font-weight: bold;">INTELLECTUAL PROPERTY NOTICE</h3>
-  </div>
-  <div style="background: #ffeaa7; padding: 15px; border-radius: 6px; border-left: 4px solid #fdcb6e;">
-    <p style="color: #2d3436; margin: 0; font-weight: 500; line-height: 1.6;">
-      <strong>EDUCATIONAL & DEMONSTRATION USE ONLY:</strong> This application is for educational and technical demonstration purposes only. It does not redistribute copyrighted assets. All Pokémon-related intellectual property belongs to their respective owners.
-    </p>
-  </div>
-  <div style="margin-top: 15px; padding: 12px; background: #fff; border-radius: 6px; border-left: 4px solid #e17055;">
-    <p style="color: #2d3436; margin: 0; font-size: 14px; font-weight: 500;">
-      <strong>⚠️ DISCLAIMER:</strong> No commercial use • No asset redistribution • Respect all intellectual property rights
-    </p>
-  </div>
-</div>
+> **INTELLECTUAL PROPERTY NOTICE**
+>
+> **EDUCATIONAL & DEMONSTRATION USE ONLY:** This application is for educational and technical demonstration purposes only. It does not redistribute copyrighted assets. All Pokemon-related intellectual property belongs to their respective owners.
+>
+> **DISCLAIMER:** No commercial use • No asset redistribution • Respect all intellectual property rights
 
 ## Key Features
 
@@ -284,15 +270,9 @@ PokeCoach/
 
 ### Installation Process
 
-<div style="background: #ffe6e6; border: 2px solid #ff4757; border-radius: 8px; padding: 20px; margin: 20px 0;">
-  <div style="display: flex; align-items: center; margin-bottom: 12px;">
-    <span style="font-size: 20px; margin-right: 8px;">⚠️</span>
-    <h4 style="color: #c44569; margin: 0; font-size: 16px; font-weight: bold;">LEGAL COMPLIANCE REQUIRED</h4>
-  </div>
-  <p style="color: #2d3436; margin: 0; font-weight: 500; line-height: 1.5;">
-    By installing and using this software, you acknowledge that this is for <strong>educational purposes only</strong> and agree to respect all intellectual property rights. <strong>Do not use for commercial purposes.</strong>
-  </p>
-</div>
+> **LEGAL COMPLIANCE REQUIRED**
+>
+> By installing and using this software, you acknowledge that this is for **educational purposes only** and agree to respect all intellectual property rights. **Do not use for commercial purposes.**
 
 ```bash
 # 1. Clone the repository
@@ -565,15 +545,9 @@ Checks: service availability • socket handshake • room lifecycle • health 
 
 ## Contributing
 
-<div style="background: #e6f3ff; border: 2px solid #0066cc; border-radius: 8px; padding: 18px; margin: 15px 0;">
-  <div style="display: flex; align-items: center; margin-bottom: 10px;">
-    <span style="font-size: 18px; margin-right: 8px;">🤝</span>
-    <h4 style="color: #004080; margin: 0; font-size: 16px;">CONTRIBUTOR RESPONSIBILITIES</h4>
-  </div>
-  <p style="color: #004080; margin: 0; font-weight: 500;">
-    All contributors must ensure their contributions respect intellectual property rights and maintain the educational nature of this project. <strong>No copyrighted assets may be added.</strong>
-  </p>
-</div>
+> **CONTRIBUTOR RESPONSIBILITIES**
+>
+> All contributors must ensure their contributions respect intellectual property rights and maintain the educational nature of this project. **No copyrighted assets may be added.**
 
 1. Fork repository
 2. Create feature branch (`git checkout -b feature/descriptor`)
