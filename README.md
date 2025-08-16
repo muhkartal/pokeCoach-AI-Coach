@@ -284,6 +284,16 @@ PokeCoach/
 
 ### Installation Process
 
+<div style="background: #ffe6e6; border: 2px solid #ff4757; border-radius: 8px; padding: 20px; margin: 20px 0;">
+  <div style="display: flex; align-items: center; margin-bottom: 12px;">
+    <span style="font-size: 20px; margin-right: 8px;">⚠️</span>
+    <h4 style="color: #c44569; margin: 0; font-size: 16px; font-weight: bold;">LEGAL COMPLIANCE REQUIRED</h4>
+  </div>
+  <p style="color: #2d3436; margin: 0; font-weight: 500; line-height: 1.5;">
+    By installing and using this software, you acknowledge that this is for <strong>educational purposes only</strong> and agree to respect all intellectual property rights. <strong>Do not use for commercial purposes.</strong>
+  </p>
+</div>
+
 ```bash
 # 1. Clone the repository
 git clone https://github.com/muhkartal/PokeCoach.git
@@ -555,6 +565,16 @@ Checks: service availability • socket handshake • room lifecycle • health 
 
 ## Contributing
 
+<div style="background: #e6f3ff; border: 2px solid #0066cc; border-radius: 8px; padding: 18px; margin: 15px 0;">
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <span style="font-size: 18px; margin-right: 8px;">🤝</span>
+    <h4 style="color: #004080; margin: 0; font-size: 16px;">CONTRIBUTOR RESPONSIBILITIES</h4>
+  </div>
+  <p style="color: #004080; margin: 0; font-weight: 500;">
+    All contributors must ensure their contributions respect intellectual property rights and maintain the educational nature of this project. <strong>No copyrighted assets may be added.</strong>
+  </p>
+</div>
+
 1. Fork repository
 2. Create feature branch (`git checkout -b feature/descriptor`)
 3. Implement with tests / validation
@@ -585,18 +605,58 @@ Coding Standards: ES6 modules • (planned) linting • small reviewable units �
 
 ## License
 
-PokeCoach is released under the MIT License. See the [LICENSE](LICENSE) file for complete terms.
+<div style="background: #f8f9fa; border: 2px solid #28a745; border-radius: 10px; padding: 20px; margin: 20px 0;">
+  <div style="display: flex; align-items: center; margin-bottom: 15px;">
+    <span style="font-size: 24px; margin-right: 10px;">📄</span>
+    <h3 style="color: #155724; margin: 0; font-size: 18px;">MIT License</h3>
+  </div>
+  <p style="color: #155724; margin: 0; font-weight: 500;">
+    PokeCoach is released under the MIT License. See the <a href="LICENSE" style="color: #007bff; text-decoration: underline;">LICENSE</a> file for complete terms.
+  </p>
+</div>
 
-### Intellectual Property Notice
+<div style="background: #f8d7da; border: 3px solid #dc3545; border-radius: 12px; padding: 25px; margin: 30px 0;">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <span style="font-size: 48px;">⚖️</span>
+    <h2 style="color: #721c24; margin: 10px 0; font-size: 24px; font-weight: bold;">INTELLECTUAL PROPERTY NOTICE</h2>
+    <div style="width: 60px; height: 3px; background: #dc3545; margin: 10px auto;"></div>
+  </div>
 
-This project is a fan-inspired technical demonstration platform. Pokémon and all related intellectual property (names, sprites, types, creatures, moves, etc.) are trademarks of their respective owners (Nintendo, Game Freak, The Pokémon Company).
+  <div style="background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #dc3545;">
+    <h4 style="color: #721c24; margin: 0 0 10px 0; font-size: 16px;">🏢 Third-Party Trademarks</h4>
+    <p style="color: #2d3436; margin: 0; line-height: 1.6; font-weight: 500;">
+      This project is a <strong>fan-inspired technical demonstration platform</strong>. Pokémon and all related intellectual property (names, sprites, types, creatures, moves, etc.) are trademarks of their respective owners (Nintendo, Game Freak, The Pokémon Company).
+    </p>
+  </div>
 
-**Important Disclaimers:**
+  <div style="background: #fff; padding: 20px; border-radius: 8px; border-left: 5px solid #ffc107;">
+    <h4 style="color: #856404; margin: 0 0 15px 0; font-size: 16px;">⚠️ IMPORTANT LEGAL DISCLAIMERS</h4>
+    <div style="display: grid; gap: 12px;">
+      <div style="display: flex; align-items: center; padding: 8px; background: #fff3cd; border-radius: 4px;">
+        <span style="color: #856404; margin-right: 10px; font-weight: bold;">❌</span>
+        <span style="color: #856404; font-weight: 500;">No endorsement by or affiliation with Nintendo/The Pokémon Company is implied</span>
+      </div>
+      <div style="display: flex; align-items: center; padding: 8px; background: #d4edda; border-radius: 4px;">
+        <span style="color: #155724; margin-right: 10px; font-weight: bold;">🎓</span>
+        <span style="color: #155724; font-weight: 500;">This is a non-commercial, educational project for technical demonstration</span>
+      </div>
+      <div style="display: flex; align-items: center; padding: 8px; background: #cce7ff; border-radius: 4px;">
+        <span style="color: #004085; margin-right: 10px; font-weight: bold;">🛡️</span>
+        <span style="color: #004085; font-weight: 500;">No copyrighted assets are redistributed; only structured metadata for game mechanics</span>
+      </div>
+      <div style="display: flex; align-items: center; padding: 8px; background: #f0d0ff; border-radius: 4px;">
+        <span style="color: #6f42c1; margin-right: 10px; font-weight: bold;">✅</span>
+        <span style="color: #6f42c1; font-weight: 500;">Always respect intellectual property rights and official game guidelines</span>
+      </div>
+    </div>
+  </div>
 
--  No endorsement by or affiliation with Nintendo/The Pokémon Company is implied
--  This is a non-commercial, educational project for technical demonstration
--  No copyrighted assets are redistributed; only structured metadata for game mechanics
--  Always respect intellectual property rights and official game guidelines
+  <div style="background: #e2e3e5; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center;">
+    <p style="color: #495057; margin: 0; font-weight: bold; font-size: 14px;">
+      🔒 BY USING THIS SOFTWARE, YOU ACKNOWLEDGE AND AGREE TO THESE TERMS
+    </p>
+  </div>
+</div>
 
 ---
 
