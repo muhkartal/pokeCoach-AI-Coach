@@ -1,0 +1,31 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+
+scrape_configs:
+  - job_name: 'pokemon-battle-api'
+    static_configs:
+      - targets: ['app:8000']
+    scrape_interval: 5s
+    metrics_path: /metrics
+
+  - job_name: 'pokemon-battle-server'
+    static_configs:
+      - targets: ['app:3000']
+    scrape_interval: 5s
+    metrics_path: /metrics
+
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['app:80']
+    scrape_interval: 15s
+
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['postgres:5432']

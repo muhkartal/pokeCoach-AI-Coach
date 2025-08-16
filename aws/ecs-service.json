@@ -1,0 +1,48 @@
+{
+  "serviceName": "pokemon-battle-arena-service",
+  "cluster": "pokemon-battle-arena-cluster",
+  "taskDefinition": "pokemon-battle-arena",
+  "desiredCount": 2,
+  "launchType": "FARGATE",
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": [
+        "subnet-XXXXXXXXX",
+        "subnet-YYYYYYYYY"
+      ],
+      "securityGroups": [
+        "sg-XXXXXXXXX"
+      ],
+      "assignPublicIp": "ENABLED"
+    }
+  },
+  "loadBalancers": [
+    {
+      "targetGroupArn": "arn:aws:elasticloadbalancing:REGION:ACCOUNT_ID:targetgroup/pokemon-battle-tg/XXXXXXXXX",
+      "containerName": "pokemon-battle-app",
+      "containerPort": 80
+    }
+  ],
+  "serviceTags": [
+    {
+      "key": "Environment",
+      "value": "production"
+    },
+    {
+      "key": "Application",
+      "value": "pokemon-battle-arena"
+    }
+  ],
+  "enableExecuteCommand": true,
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 50,
+    "deploymentCircuitBreaker": {
+      "enable": true,
+      "rollback": true
+    }
+  },
+  "serviceConnectConfiguration": {
+    "enabled": false
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Pokemon Battle Arena Dashboard",
+    "tags": ["pokemon", "gaming", "realtime"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Active Players",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(active_connections)",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Active Rooms",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(active_rooms)",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Battle Duration",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(battle_duration_seconds_sum[5m]) / rate(battle_duration_seconds_count[5m])",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 4,
+        "title": "WebSocket Messages",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(websocket_messages_total[1m])",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 8}
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "5s"
+  }
+}
